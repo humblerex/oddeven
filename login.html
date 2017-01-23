@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta content="viewport" width="device-width" intial-scale="1.0"/>
+	<title>
+	Odd-Even Car Pool
+	</title>
+	
+	<link href="css/component.css"  type="text/css" rel="stylesheet">
+	<link href="css/login.css" rel="stylesheet" type="text/css" >
+	<script src="jquery-1.9.1.min.js"></script>	
+	
+	<script language="javascript">
+document.onmousedown=disableclick;
+status="Right Click Disabled";
+function disableclick(event)
+{
+  if(event.button==2)
+   {
+     alert(status);
+     return false;    
+   }
+}
+		
+	
+</script>
+	
+	<script language="javascript">
+	
+	</script>
+	
+	<script language="javascript">
+	
+		$(document).ready(function(){
+			
+			$("#signin").click(function(){
+				var username=$("#username").val();
+				var password=$("#password").val();
+				var dataString='username='+username+'&password='+password;
+				
+				if($.trim(username).length>0 && $.trim(password).length>0)
+					{
+						$.ajax({
+							type:"POST",
+							url:"ajaxlogin.php",
+							data:dataString,
+							cache:false,
+							beforeSend:function(){
+								$("#signin").val('Connecting...');},
+							success:function(data){
+								if(data){
+									$("body").load("home.php").hide().fadeIn(1500).delay(6000);
+									}else{
+									     $("#msg").html("<span style='color:#cc0000'>Error:</span>Invalid username and Password.");
+										$("#signin").val('Login');
+										$("#login").addClass('shake');
+									 setTimeout(function() {
+       $("#login").removeClass("shake");
+   }, 3000);
+										
+									}
+							}
+							 	});
+					}
+				return false;
+			});
+		
+		});
+		
+		
+	</script>
+	
+	
+	</head>
+
+	
+	<body>
+	
+		<header>
+		<h1>Find your CarPartner</h1>
+			<p>Site will not be responsible for any fake information.. You first confirm it my meeting them once. We are here only to provide you suggestions.</p>
+		</header>
+		<div class="back">
+		<img src="intro.png" />
+		</div>
+		<div id="login">
+		<form name="login">
+			<span>Username:</span>
+			<input name="username" id="username" type="text" placeholder="Enter Your username">
+			
+			<span>Password:</span>
+			<input name="password" id="password" type="text" placeholder="Enter your password">
+			
+			<p><a href="">Forgot password?</a></p>
+	<input type="submit" name="submit" value="Login" class="signin" id="signin">
+			
+			<a href="a.html" class="register">Get Registered?
+			</a>
+			<span id="msg" class="clr"></span>
+			</form>
+			
+			</div>
+		
+	</body>
+</html>

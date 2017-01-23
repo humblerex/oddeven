@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta content="viewport" width="device-width" intial-scale="1.0"/>
+	<title>
+	Odd-Even Car Pool
+	</title>
+	
+	<link href="css/passwordcheck.css"  type="text/css" rel="stylesheet">
+	<link href="css/component.css"  type="text/css" rel="stylesheet">
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+		<script language="javascript">
+	
+			function check()
+			{
+				$("#loaderimg").show();
+				jQuery.ajax({
+					url:"check.php",
+					data:'username='+$("#usr").val(),
+					type:"POST",
+					success:function(data){
+						$("#stat").html(data);
+						$("#loaderimg").hide();
+					},
+					error:function(){}
+				});
+			
+					
+			}
+			
+		
+			
+	</script>
+	
+	
+	<script language="javascript">
+	
+		$(document).ready(function(){
+			$("#password").keyup(function(){
+				$("#result").html(checkStrength($("#password").val()))
+			})
+		function checkStrength(password){
+			var strength=0;
+			if(password.length<6){
+				$("#result").removeClass()
+				$("#result").addClass('short')
+				return 'Too short'
+			}
+			
+			if (password.length>7) strength+=1
+			if(password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) strength+=1
+			if(password.match(/([a-zA-Z])/)&&password.match(/([0-9])/)) strength+=1
+			if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+		
+	
+if(strength<2){
+	$("#result").removeClass()
+	$("#result").addClass('weak')
+	return 'Weak'
+}else if (strength == 2) {
+$('#result').removeClass()
+$('#result').addClass('good')
+return 'Good'
+} else {
+$('#result').removeClass()
+$('#result').addClass('strong')
+return 'Strong'
+	
+}
+	}
+		
+		});
+	
+	</script>
+	
+	
+	
+	<script language="javascript">
+document.onmousedown=disableclick;
+status="Right Click Disabled";
+function disableclick(event)
+{
+  if(event.button==2)
+   {
+     alert(status);
+     return false;    
+   }
+	
+	
+	}
+		
+	</script>
+	
+	
+	</head>
+
+	
+	<body>
+	
+		<header>
+		<h1>Find your CarPartner</h1>
+			<p>Site will not be responsible for any fake information.. You first confirm it my meeting them once. We are here only to provide you suggestions.</p>
+		</header>
+		
+		
+		
+		<div id="main">
+
+			
+		<a href="login.html"><div id="already">
+		Already Registered?</div>
+			</a>			
+			<form name="personaldetails" action="insert.php" method="post" id="pdetails">
+			<div id="personal">
+			<h2>Personal Detail</h2>
+			
+			<label>Name<span>*</span>:</label>
+			<input type="text" name="name" placeholder="Enter your name" required>
+				<label>Email:</label>
+			<input type="text" placeholder="Enter your email" name="email">
+			<label>Mobile No.<span>*</span>:</label>
+			
+				
+				<input type="number" min="7000000000" max="9999999999" placeholder="Enter your Mobile no." name="mobile"  required />
+		
+			<label>Gender<span>*</span>:</label>
+			<input type="radio" value="male" name="sex">Male
+			<input type="radio" value="female" name="sex">Female
+			
+			
+			<label>Age<span>*</span>:</label>
+			
+			<select name="age">
+			<option>Select your Age Group</option>
+			<option value="18">18-25</option>
+				<option value="25" >25-35</option>
+				<option value="35">35-45</option>
+				<option value="45">45-55</option>
+				<option value="55">55+</option>
+			</select>
+			
+			<label class="p-id">More Details
+			</label>
+			<label class="adhar">Aadhar No.</label>
+		<input id="adhar" type="number" min="1000000000000000" max="9999999999999999" placeholder="Provide your Aadhar no." name="adhar"/>
+			
+			<label class="carw">Car no.</label>
+			<input id="car" type="text" placeholder="Enter your car number" name="car">
+			
+			<label class="company-detail">Company detail</label>
+			<label>Company Name</label>
+			<input id="cname" name="cname" type="text" maxlength="225" placeholder="Enter Your Company name"/>
+			
+			<label>Employee ID</label>
+			<input id="eid" name="eid" type="number" maxlength="10" placeholder="Provide your Employee id no." min="0" />
+			
+				</div>	
+			
+			
+			
+			
+			
+		
+			
+			
+		<div id="travel">			
+			<h2>Travel Detail</h2>
+				
+				<label class="from">Oneway</label><input type="radio" name="side" value="oneway">
+				
+					<label class="to">Return</label><input type="radio" name="side" value="return" selected>
+				<br/>
+				
+				<label class="from">From<span>*</span>:</label>
+				<select class="pickup" name="from">
+				<option>Pick Up</option>
+<option value="A-3 Janak Puri">A-3 Janak Puri </option>
+<option value="A.G.C.R.">A.G.C.R. </option>
+<option value="A.K.Market">A.K.Market </option>
+<option value="AIIMS">AIIMS</option>
+<option value="Ajmeri Gate Extn.">Ajmeri Gate Extn. </option>
+<option value="Ajmeri gate Side">Ajmeri gate Side</option>
+<option value="Akshardhaam">Akshardhaam</option>
+<option value="Ambedkar Nagar">Ambedkar Nagar</option>
+<option value="Amberhai">Amberhai </option>
+<option value="Anand Parbat">Anand Parbat </option>
+<option value="Anand Parbat Indl. Area">Anand Parbat Indl. Area </option>
+<option value="Anand Vihar">Anand Vihar </option>
+<option value="Andrews Ganj">Andrews Ganj</option>
+<option value="ASAF ALI ROAD">ASAF ALI ROAD</option>
+<option value="Ashok Nagar">Ashok Nagar </option>
+<option value="Ashoka Park Extn.">Ashoka Park Extn. </option>
+<option value="Ashram">Ashram</option>
+<option value="Azad Nagar">Azad Nagar </option>
+<option value="B-1 Janak Puri">B-1 Janak Puri </option>
+<option value="Babarpur">Babarpur </option>
+<option value="Badhosarai">Badhosarai </option>
+<option value="Bagrola">Bagrola </option>
+<option value="Bakkarwala">Bakkarwala </option>
+<option value="Balbir Nagar">Balbir Nagar </option>
+<option value="Bank Street">Bank Street </option>
+<option value="Baprola">Baprola </option>
+<option value="Barakhamba Road" selected>Barakhamba Road</option>
+<option value="Baratooti">Baratooti </option>
+<option value="Baroda House">Baroda House </option>
+<option value="Barthal">Barthal </option>
+<option value="Batla House">Batla House</option>
+<option value="Bengali Market">Bengali Market </option>
+<option value="Ber Sarai">Ber Sarai</option>
+<option value="Bhagat Singh Market">Bhagat Singh Market </option>
+<option value="Bhajan Pura">Bhajan Pura </option>
+<option value="BHIKAJI CAMA PLACE">BHIKAJI CAMA PLACE</option>
+<option value="Bhola Nath Nagar">Bhola Nath Nagar </option>
+<option value="Birla Lines">Birla Lines </option>
+<option value="Brahampuri">Brahampuri </option>
+<option value="Brijwasan">Brijwasan</option>
+<option value="Burari">Burari </option>
+<option value="C-4 Janak Puri">C-4 Janak Puri </option>
+<option value="C.C.I.">C.C.I. </option>
+<option value="CGO">CGO</option>
+<option value="Chanakya Puri">Chanakya Puri</option>
+<option value="Chand Nagar">Chand Nagar </option>
+<option value="Chander Lok">Chander Lok</option>
+<option value="Chandni Chowk">Chandni Chowk </option>
+<option value="Chankyapuri">Chankyapuri</option>
+<option value="Chatarpur">Chatarpur</option>
+<option value="Chaukhandi">Chaukhandi </option>
+<option value="Chawri Bazar">Chawri Bazar </option>
+<option value="Chhawla">Chhawla </option>
+<option value="Chilla">Chilla </option>
+<option value="Chirag Delhi">Chirag Delhi</option>
+<option value="Civil Lines">Civil Lines </option>
+<option value="Connaught Place">Connaught Place </option>
+<option value="Constitution House">Constitution House </option>
+<option value="CR Park">CR Park</option>
+<option value="CRPF Jharoda Kalan">CRPF Jharoda Kalan </option>
+<option value="D C Goyla">D C Goyla </option>
+<option value="D C Nangli Sakravati">D C Nangli Sakravati </option>
+<option value="D. K. Mohan Garden">D. K. Mohan Garden </option>
+<option value="D.E.S.U. Colony">D.E.S.U. Colony </option>
+<option value="DA Block shalimar bagh">DA Block shalimar bagh</option>
+<option value="Dabri">Dabri </option>
+<option value="Dada Ghosh Bhawan">Dada Ghosh Bhawan </option>
+<option value="Dareeba">Dareeba </option>
+<option value="Darya Ganj">Darya Ganj </option>
+<option value="Daulatpur">Daulatpur </option>
+<option value="Dayalpur">Dayalpur </option>
+<option value="Defence Colony">Defence Colony</option>
+<option value="Delhi G.P.O.">Delhi G.P.O. </option>
+<option value="Delhi High Court">Delhi High Court </option>
+<option value="Delhi Industrial Area">Delhi Industrial Area </option>
+<option value="Delhi Sadar Bazar">Delhi Sadar Bazar </option>
+<option value="Delhi University">Delhi University </option>
+<option value="Desh Bandhu Gupta Road">Desh Bandhu Gupta Road </option>
+<option value="Devli Khanpur">Devli Khanpur</option>
+<option value="Dhaula Kuan">Dhaula Kuan</option>
+<option value="Dhulsiras">Dhulsiras </option>
+<option value="Dichaoal Kalan">Dichaoal Kalan </option>
+<option value="Dilshad Colony">Dilshad Colony</option>
+<option value="Dilshad Garden">Dilshad Garden </option>
+<option value="Dindarpur">Dindarpur </option>
+<option value="Distt Courts">Distt Courts </option>
+<option value="Distt. Court (KKD)">Distt. Court (KKD) </option>
+<option value="DLF Shivaji Marg">DLF Shivaji Marg</option>
+<option value="Dulsiras">Dulsiras </option>
+<option value="Dwarka">Dwarka</option>
+<option value="Dwarka Flyover">Dwarka Flyover</option>
+<option value="Dwarka Mor">Dwarka Mor</option>
+<option value="Dwarka sec 18B">Dwarka sec 18B</option>
+<option value="Dwarka Sec 23">Dwarka Sec 23</option>
+<option value="Dwarka Sec-6">Dwarka Sec-6 </option>
+<option value="Dwarka Sector8">Dwarka Sector8</option>
+<option value="East Of Kailash">East Of Kailash</option>
+<option value="Election Commission">Election Commission </option>
+<option value="ESI">ESI </option>
+<option value="F F C Okhla">F F C Okhla </option>
+<option value="Faridabad">Faridabad</option>
+<option value="Fateh Nagar">Fateh Nagar </option>
+<option value="G.T.B. Hospital">G.T.B. Hospital </option>
+<option value="Galib Pur">Galib Pur </option>
+<option value="Gandhi Nagar">Gandhi Nagar </option>
+<option value="Gandhi Nagar Bazar">Gandhi Nagar Bazar </option>
+<option value="Gandhi Smarak Nidhi">Gandhi Smarak Nidhi </option>
+<option value="Gautam Nagar">Gautam Nagar</option>
+<option value="Geeta Colony">Geeta Colony </option>
+<option value="Ghandi chowk">Ghandi chowk</option>
+<option value="Ghaziabad" >Ghaziabad</option>
+<option value="Ghazipur">Ghazipur </option>
+<option value="Ghonda">Ghonda </option>
+<option value="Ghuman Hera">Ghuman Hera </option>
+<option value="GK1">GK1</option>
+<option value="GK2">GK2</option>
+<option value="Gokal Puri">Gokal Puri </option>
+<option value="Goverdhan Bihari Colony">Goverdhan Bihari Colony </option>
+<option value="Govind Pura">Govind Pura </option>
+<option value="Govind Puri">Govind Puri</option>
+<option value="Govindpuram">Govindpuram</option>
+<option value="Greater Kailash 2">Greater Kailash 2</option>
+<option value="Greater Noida">Greater Noida</option>
+<option value="Greater Noida UP">Greater Noida UP</option>
+<option value="Green Fields Colony">Green Fields Colony</option>
+<option value="Green Park Main">Green Park Main</option>
+<option value="Gulabi Bagh">Gulabi Bagh </option>
+<option value="Gurgaon">Gurgaon</option>
+<option value="Gurgaon Fortis">Gurgaon Fortis</option>
+<option value="Gurgaon sector 42">Gurgaon sector 42</option>
+<option value="Gurgaon Sector 44">Gurgaon Sector 44</option>
+<option value="Guru Gobind Singh Marg">Guru Gobind Singh Marg </option>
+<option value="Gym Khana Club">Gym Khana Club </option>
+<option value="Hari Nagar">Hari Nagar </option>
+<option value="Hari Nagar BE Block">Hari Nagar BE Block </option>
+<option value="Hari Nagar Dadb Block">Hari Nagar Dadb Block </option>
+<option value="Hastal Village">Hastal Village </option>
+<option value="Hauz Khaz">Hauz Khaz</option>
+<option value="Hauz Qazi">Hauz Qazi </option>
+<option value="Himmatpuri">Himmatpuri </option>
+<option value="Hirankudna">Hirankudna </option>
+<option value="Hosiery Complex Noida">Hosiery Complex Noida</option>
+<option value="Huda City Centre Gurgaon">Huda City Centre Gurgaon</option>
+<option value="I P Extension">I P Extension</option>
+<option value="I.A.R.I.">I.A.R.I. </option>
+<option value="I.P.Estate">I.P.Estate </option>
+<option value="IIT delhi">IIT delhi</option>
+<option value="IMT Manesar">IMT Manesar</option>
+<option value="Inder Lok">Inder Lok</option>
+<option value="Inderpuri">Inderpuri </option>
+<option value="IGI Airport">IGI Airport</option>
+<option value="Indira Park">Indira Park </option>
+<option value="Indirapuram">Indirapuram</option>
+<option value="Indraprastha H.O">Indraprastha H.O</option>
+<option value="IP extension">IP extension</option>
+<option value="Issapur">Issapur </option>
+<option value="J-6 Rajouri Garden">J-6 Rajouri Garden </option>
+<option value="Jafarpur">Jafarpur </option>
+<option value="Jafrabad">Jafrabad </option>
+<option value="Jagatpur">Jagatpur </option>
+<option value="Jagjit Nagar">Jagjit Nagar </option>
+<option value="Jail Road">Jail Road </option>
+<option value="Jama Masjid">Jama Masjid </option>
+<option value="Jamia Nagar">Jamia Nagar</option>
+<option value="Janak Puri">Janak Puri</option>
+<option value="Janpath">Janpath </option>
+<option value="Janta Market">Janta Market </option>
+<option value="Jasola">Jasola</option>
+<option value="Jawahar Nagar">Jawahar Nagar </option>
+<option value="Jawahar Park or Sahid Nagar">Jawahar Park or Sahid Nagar</option>
+<option value="Jawala Heri">Jawala Heri </option>
+<option value="Jeevan Park">Jeevan Park </option>
+<option value="Jhandewalan Extn">Jhandewalan Extn</option>
+<option value="Jharoda Kalan">Jharoda Kalan </option>
+<option value="Jharoda Majraa">Jharoda Majraa </option>
+<option value="Jhatikara">Jhatikara </option>
+<option value="Jhilmil H.O">Jhilmil H.O</option>
+<option value="Jhilmil Tahirpur">Jhilmil Tahirpur </option>
+<option value="Johripur">Johripur </option>
+<option value="Jor Bagh">Jor Bagh</option>
+<option value="Jwala Puri">Jwala Puri </option>
+<option value="Jwalaheri">Jwalaheri </option>
+<option value="Kailash Colony">Kailash Colony</option>
+<option value="Kailash Nagar">Kailash Nagar </option>
+<option value="Kair">Kair </option>
+<option value="Kakrola">Kakrola </option>
+<option value="Kalkaji">Kalkaji</option>
+<option value="Kalkaji Extension">Kalkaji Extension</option>
+<option value="Kalyanpuri">Kalyanpuri </option>
+<option value="Kalyanvas">Kalyanvas </option>
+<option value="Kamla Nagar">Kamla Nagar </option>
+<option value="Kangan Heri">Kangan Heri </option>
+<option value="Kanhaiya Nagar">Kanhaiya Nagar</option>
+<option value="Karam Pura">Karam Pura </option>
+<option value="Karawal Nagar">Karawal Nagar </option>
+<option value="Karol Bagh">Karol Bagh </option>
+<option value="Keshav Puram">Keshav Puram</option>
+<option value="Khaira">Khaira </option>
+<option value="Khan market">Khan market</option>
+<option value="Khanpur">Khanpur</option>
+<option value="Khazuri Khas">Khazuri Khas </option>
+<option value="Khera Dabur">Khera Dabur </option>
+<option value="Khyala Phase - I">Khyala Phase -  I </option>
+<option value="Khyala Phase - II">Khyala Phase - II </option>
+<option value="Kotla Mubarakpur">Kotla Mubarakpur</option>
+<option value="Krishi Bhawan">Krishi Bhawan </option>
+<option value="Krishna Nagar H.O">Krishna Nagar H.O</option>
+<option value="L. M. Nagar Indl. Area">L. M. Nagar Indl. Area </option>
+<option value="Lado Sarai">Lado Sarai</option>
+<option value="Lady Harding Medical College">Lady Harding Medical College </option>
+<option value="Lajpat Nagar">Lajpat Nagar</option>
+<option value="Lajpat Nagar">Lajpat Nagar</option>
+<option value="Lawrance Road">Lawrance Road</option>
+<option value="Laxmi Nagar">Laxmi Nagar</option>
+<option value="Laxmi Nagar">Laxmi Nagar </option>
+<option value="Lodhi Road">Lodhi Road</option>
+<option value="Loni Road">Loni Road </option>
+<option value="Loni Road Housing Complex">Loni Road Housing Complex </option>
+<option value="M.B.S. Nagar">M.B.S. Nagar </option>
+<option value="M2K Pitampura">M2K Pitampura</option>
+<option value="Madipur Slum Quarter">Madipur Slum Quarter </option>
+<option value="Madipur Village">Madipur Village </option>
+<option value="Mahabir Nagar">Mahabir Nagar </option>
+<option value="Maharani Bagh">Maharani Bagh</option>
+<option value="Mahavir Enclave">Mahavir Enclave</option>
+<option value="Mahipalpur Extn">Mahipalpur Extn</option>
+<option value="Malik Pur">Malik Pur </option>
+<option value="Malik Pur">Malik Pur </option>
+<option value="Malka Ganj">Malka Ganj </option>
+<option value="Malviya Nagar">Malviya Nagar</option>
+<option value="Man Sarovar Park">Man Sarovar Park </option>
+<option value="Mandawali Fazalpur">Mandawali Fazalpur </option>
+<option value="Mandoli Saboli">Mandoli Saboli </option>
+<option value="Manesar">Manesar</option>
+<option value="Mansarover Garden">Mansarover Garden </option>
+<option value="Master Prithvi Nath Marg">Master Prithvi Nath Marg </option>
+<option value="Matiala">Matiala </option>
+<option value="Maujpur">Maujpur </option>
+<option value="Maya Puri">Maya Puri </option>
+<option value="Mayur Vihar II">Mayur Vihar II</option>
+<option value="Mayur Vihar Ph II">Mayur Vihar Ph II</option>
+<option value="Mayur Vihar Ph-I">Mayur Vihar Ph-I </option>
+<option value="Mayur Vihar Ph-III">Mayur Vihar Ph-III </option>
+<option value="Mayur Vihar Phase 2">Mayur Vihar Phase 2</option>
+<option value="Minto Road">Minto Road </option>
+<option value="Mitraon">Mitraon </option>
+<option value="Model Town">Model Town</option>
+<option value="Moolchand">Moolchand</option>
+<option value="Moti Nagar">Moti Nagar</option>
+<option value="Motia Khan">Motia Khan</option>
+<option value="Multani Dhanda">Multani Dhanda </option>
+<option value="Mundela Kalan">Mundela Kalan </option>
+<option value="Mundka">Mundka </option>
+<option value="Munirka">Munirka</option>
+<option value="N.I.Area">N.I.Area </option>
+<option value="N.S.I.T. Dwarka">N.S.I.T. Dwarka </option>
+<option value="Najafgarh">Najafgarh </option>
+<option value="Nand Nagri A">Nand Nagri A </option>
+<option value="Nand Nagri C">Nand Nagri C </option>
+<option value="Nangal Dewat near Vasant Kunj D6">Nangal Dewat near Vasant Kunj D6</option>
+<option value="Nangal Raya">Nangal Raya </option>
+<option value="Nangloi">Nangloi </option>
+<option value="Nangloi - II">Nangloi - II </option>
+<option value="Nangloi - III">Nangloi - III </option>
+<option value="Naraina Industrial Estate H.O">Naraina Industrial Estate H.O</option>
+<option value="Naraina Vihar">Naraina Vihar</option>
+<option value="Naraina Village">Naraina Village </option>
+<option value="Nasirpur">Nasirpur </option>
+<option value="National Physical Laboratory">National Physical Laboratory </option>
+<option value="Nehru Park">Nehru Park</option>
+<option value="Nehru Place">Nehru Place</option>
+<option value="New Ashok Nagar">New Ashok Nagar</option>
+<option value="New Delhi">New Delhi</option>
+<option value="New Delhi G.P.O.">New Delhi G.P.O. </option>
+<option value="New Delhi H.O">New Delhi H.O</option>
+<option value="New Delhi Railway Station">New Delhi Railway Station</option>
+<option value="New Delhi railway Stn">New Delhi railway Stn</option>
+<option value="New Friends Colony">New Friends Colony</option>
+<option value="New Kondli">New Kondli</option>
+<option value="New Palam Vihar">New Palam Vihar</option>
+<option value="New Seemapuri">New Seemapuri </option>
+<option value="New Usmanpur">New Usmanpur </option>
+<option value="Nilothi">Nilothi </option>
+<option value="Nirman Bhawan">Nirman Bhawan </option>
+<option value="Nirman Vihar">Nirman Vihar </option>
+<option value="NIT Faridabad">NIT Faridabad</option>
+<option value="Noida">Noida</option>
+<option value="Noida Film City">Noida Film City</option>
+<option value="Noida Phase II NSEZ">Noida Phase II NSEZ</option>
+<option value="Noida sector 142">Noida sector 142</option>
+<option value="Noida Sector 2">Noida Sector 2</option>
+<option value="Noida Sector 61">Noida Sector 61</option>
+<option value="North Avenue">North Avenue </option>
+<option value="Okhla">Okhla</option>
+<option value="Okhla industrial area Phase II">Okhla industrial area Phase II</option>
+<option value="Okhla phase 1">Okhla phase 1</option>
+<option value="Okhla Phase III">Okhla Phase III</option>
+<option value="Old Seemapuri">Old Seemapuri </option>
+<option value="Other">Other</option>
+<option value="Padam Nagar">Padam Nagar </option>
+<option value="Pahar Ganj">Pahar Ganj </option>
+<option value="Palam Village">Palam Village </option>
+<option value="Pancheel Park">Pancheel Park</option>
+<option value="Pandara Road">Pandara Road </option>
+<option value="Pandwala Kalan">Pandwala Kalan </option>
+<option value="Papravat">Papravat </option>
+<option value="Parliament House">Parliament House </option>
+<option value="Paschim Vihar">Paschim Vihar </option>
+<option value="Paschim Vihar B Block">Paschim Vihar B Block </option>
+<option value="Patel Nagar">Patel Nagar </option>
+<option value="Patel Nagar East">Patel Nagar East </option>
+<option value="Patel Nagar South">Patel Nagar South </option>
+<option value="Patel Nagar West">Patel Nagar West </option>
+<option value="Patiala House">Patiala House</option>
+<option value="Patiala House">Patiala House </option>
+<option value="Patparganj">Patparganj </option>
+<option value="Patrachar Vidyalay">Patrachar Vidyalay </option>
+<option value="Peeragarhi">Peeragarhi </option>
+<option value="Phase 2 Noida">Phase 2 Noida</option>
+<option value="Pitam Pura">Pitam Pura</option>
+<option value="Pragati Maidan">Pragati Maidan </option>
+<option value="Prashant Vihar">Prashant Vihar</option>
+<option value="Preet Vihar">Preet Vihar</option>
+<option value="Punjabi Bagh">Punjabi Bagh </option>
+<option value="Punjabi Bagh Club">Punjabi Bagh Club</option>
+<option value="Punjabi Bagh Sec - III">Punjabi Bagh Sec - III </option>
+<option value="Pushpa Bhawan">Pushpa Bhawan</option>
+<option value="Quazipur">Quazipur </option>
+<option value="Qutub Institutional Area">Qutub Institutional Area</option>
+<option value="R K Puram (Main)">R K Puram (Main) </option>
+<option value="R K Puram Sect-1">R K Puram Sect-1 </option>
+<option value="R K Puram Sect-12">R K Puram Sect-12 </option>
+<option value="R K Puram Sect-3">R K Puram Sect-3 </option>
+<option value="R K Puram Sect-4">R K Puram Sect-4 </option>
+<option value="R K Puram Sect-5">R K Puram Sect-5 </option>
+<option value="R K Puram Sect-8">R K Puram Sect-8 </option>
+<option value="R K Puram Sect7">R K Puram Sect7 </option>
+<option value="R K Puram West">R K Puram West </option>
+<option value="R R Hospital">R R Hospital </option>
+<option value="R.C.A.O.">R.C.A.O. </option>
+<option value="Raghubar Pura">Raghubar Pura </option>
+<option value="Rail Bhawan">Rail Bhawan </option>
+<option value="Raj Nagar - II">Raj Nagar - II </option>
+<option value="Rajeev Chowk">Rajeev Chowk</option>
+<option value="Rajender Nagar">Rajender Nagar </option>
+<option value="Rajgarh Colony">Rajgarh Colony </option>
+<option value="Rajghat Power House">Rajghat Power House </option>
+<option value="Rajnagar Extension Ghaziabad">Rajnagar Extension Ghaziabad</option>
+<option value="Rajouri Garden">Rajouri Garden </option>
+<option value="Rajouri Market">Rajouri Market </option>
+<option value="Ram Nagar">Ram Nagar </option>
+<option value="Ramesh Nagar H.O">Ramesh Nagar H.O</option>
+<option value="Rampura">Rampura</option>
+<option value="Rana Pratap Bagh">Rana Pratap Bagh </option>
+<option value="Ranhola">Ranhola </option>
+<option value="Rani Bagh">Rani Bagh</option>
+<option value="Raota">Raota </option>
+<option value="Rashtrapati Bhawan">Rashtrapati Bhawan </option>
+<option value="Rewla Khanpur">Rewla Khanpur </option>
+<option value="Rithala">Rithala</option>
+<option value="Rohini Sec 7">Rohini Sec 7</option>
+<option value="Rohini Sec-28">Rohini Sec-28</option>
+<option value="Rohini Sector 1">Rohini Sector 1</option>
+<option value="Rohini Sector 1 Avantika">Rohini Sector 1 Avantika</option>
+<option value="Rohini sector 15">Rohini sector 15</option>
+<option value="Rohini sector 16">Rohini sector 16</option>
+<option value="Rohini Sector 18">Rohini Sector 18</option>
+<option value="Rohini Sector 24">Rohini Sector 24</option>
+<option value="Rohini sector 28">Rohini sector 28</option>
+<option value="Rohini sectors 1 to Sector 25">Rohini sectors 1 to Sector 25</option>
+<option value="Rohtash Nagar">Rohtash Nagar </option>
+<option value="S J Enclave">S J Enclave </option>
+<option value="S P School">S P School </option>
+<option value="Sabhapur">Sabhapur </option>
+<option value="Sabji Mandi">Sabji Mandi</option>
+<option value="Sagar Pur">Sagar Pur</option>
+<option value="Sagarpur">Sagarpur </option>
+<option value="Sainik Farm">Sainik Farm</option>
+<option value="Sangam Vihar">Sangam Vihar</option>
+<option value="Sanjay Nagar Mangol Pur">Sanjay Nagar Mangol Pur</option>
+<option value="Sansad Marg H.O">Sansad Marg H.O</option>
+<option value="Sansadiya Soudh">Sansadiya Soudh </option>
+<option value="Saraswati Vihar">Saraswati Vihar</option>
+<option value="Sarojini Nagar">Sarojini Nagar</option>
+<option value="Sarojini Nagar H.O">Sarojini Nagar H.O</option>
+<option value="Sat Nagar">Sat Nagar </option>
+<option value="Secretariat North">Secretariat North </option>
+<option value="Sector 22 Dwarka">Sector 22 Dwarka</option>
+<option value="Sector 44 Gurgaon">Sector 44 Gurgaon</option>
+<option value="Sector 62">Sector 62</option>
+<option value="Seelampur">Seelampur </option>
+<option value="Shahabad Mohammadpur">Shahabad Mohammadpur</option>
+<option value="Shahdara">Shahdara </option>
+<option value="Shahdara Mandi">Shahdara Mandi </option>
+<option value="Shakarpur">Shakarpur </option>
+<option value="Shalimar Bagh">Shalimar Bagh</option>
+<option value="Shastri Bhawan">Shastri Bhawan </option>
+<option value="Shastri Nagar">Shastri Nagar </option>
+<option value="Shastri Park">Shastri Park</option>
+<option value="Sheikh Sarai">Sheikh Sarai</option>
+<option value="Sheikh Sarai">Sheikh Sarai</option>
+<option value="Okhla phase 2">Okhla phase 2</option>
+<option value="Shivaji Park">Shivaji Park </option>
+<option value="Shopping Centre Mayapuri">Shopping Centre Mayapuri </option>
+<option value="Shyam Vihar">Shyam Vihar</option>
+<option value="Signal Enclave">Signal Enclave </option>
+<option value="Sonia Vihar">Sonia Vihar </option>
+<option value="Sonipat">Sonipat</option>
+<option value="South Avenue">South Avenue </option>
+<option value="South Delhi Campus">South Delhi Campus </option>
+<option value="South Extension">South Extension</option>
+<option value="South extension 2">South extension 2</option>
+<option value="South extension 2 ndse2">South extension 2 ndse2</option>
+<option value="Station Road">Station Road </option>
+<option value="Subhash Nagar">Subhash Nagar </option>
+<option value="Subhash Nagar West">Subhash Nagar West </option>
+<option value="Subroto Park">Subroto Park </option>
+<option value="Sultanpur">Sultanpur </option>
+<option value="Sunder Nagar">Sunder Nagar</option>
+<option value="Sunder Vihar">Sunder Vihar </option>
+<option value="Supreme Court">Supreme Court </option>
+<option value="Surajmal Vihar">Surajmal Vihar </option>
+<option value="Surehra">Surehra </option>
+<option value="Swami Ram Tirth Nagar">Swami Ram Tirth Nagar </option>
+<option value="T B Hospital">T B Hospital </option>
+<option value="Technology Bhawan">Technology Bhawan </option>
+<option value="Telewara">Telewara </option>
+<option value="Tihar jail">Tihar jail</option>
+<option value="Tikri Kalan">Tikri Kalan </option>
+<option value="Tilak Nagar">Tilak Nagar </option>
+<option value="Tilak Nagar East">Tilak Nagar East </option>
+<option value="Tilangpur Kotla">Tilangpur Kotla </option>
+<option value="Tri Nagar">Tri Nagar</option>
+<option value="Trilok Puri">Trilok Puri </option>
+<option value="Tuglakabad">Tuglakabad</option>
+<option value="Udyog Bhawan">Udyog Bhawan </option>
+<option value="Ujwa">Ujwa </option>
+<option value="Union Public Service Commissio">Union Public Service Commissio </option>
+<option value="Uttam Nagar">Uttam Nagar</option>
+<option value="Uttam Nagar">Uttam Nagar </option>
+<option value="V.K. Nagar">V.K. Nagar </option>
+<option value="Vaishali">Vaishali</option>
+<option value="Vasant Kunj">Vasant Kunj </option>
+<option value="Vasant Kunj Pkt-A">Vasant Kunj Pkt-A </option>
+<option value="Vasant Vihar-1">Vasant Vihar-1 </option>
+<option value="Vasant Vihar-2">Vasant Vihar-2 </option>
+<option value="Vasundhara">Vasundhara</option>
+<option value="Vasundhra Enclave">Vasundhra Enclave </option>
+<option value="Vijay Enclave">Vijay Enclave</option>
+<option value="Vikas Puri">Vikas Puri </option>
+<option value="Vishnu Garden">Vishnu Garden </option>
+<option value="Vishwas Nagar">Vishwas Nagar </option>
+<option value="Vivek Vihar">Vivek Vihar </option>
+<option value="West Rohtash Nagar">West Rohtash Nagar</option>
+<option value="Yamuna Vihar">Yamuna Vihar </option>
+<option value="Yozna Vihar">Yozna Vihar </option>
+<option value="Zafrabad">Zafrabad</option>
+<option value="Zakhira">Zakhira </option>
+
+				
+				</select>
+				
+				
+				<label class="to">To<span>*</span>:</label>
+				<select class="dropat" name="dropat">
+					
+					
+				<option>Drop At</option>
+				
+<option value="A-3 Janak Puri">A-3 Janak Puri </option>
+<option value="A.G.C.R.">A.G.C.R. </option>
+<option value="A.K.Market">A.K.Market </option>
+<option value="AIIMS">AIIMS</option>
+<option value="Ajmeri Gate Extn.">Ajmeri Gate Extn. </option>
+<option value="Ajmeri gate Side">Ajmeri gate Side</option>
+<option value="Akshardhaam">Akshardhaam</option>
+<option value="Ambedkar Nagar">Ambedkar Nagar</option>
+<option value="Amberhai">Amberhai </option>
+<option value="Anand Parbat">Anand Parbat </option>
+<option value="Anand Parbat Indl. Area">Anand Parbat Indl. Area </option>
+<option value="Anand Vihar">Anand Vihar </option>
+<option value="Andrews Ganj">Andrews Ganj</option>
+<option value="ASAF ALI ROAD">ASAF ALI ROAD</option>
+<option value="Ashok Nagar">Ashok Nagar </option>
+<option value="Ashoka Park Extn.">Ashoka Park Extn. </option>
+<option value="Ashram">Ashram</option>
+<option value="Azad Nagar">Azad Nagar </option>
+<option value="B-1 Janak Puri">B-1 Janak Puri </option>
+<option value="Babarpur">Babarpur </option>
+<option value="Badhosarai">Badhosarai </option>
+<option value="Bagrola">Bagrola </option>
+<option value="Bakkarwala">Bakkarwala </option>
+<option value="Balbir Nagar">Balbir Nagar </option>
+<option value="Bank Street">Bank Street </option>
+<option value="Baprola">Baprola </option>
+<option value="Barakhamba Road" selected>Barakhamba Road</option>
+<option value="Baratooti">Baratooti </option>
+<option value="Baroda House">Baroda House </option>
+<option value="Barthal">Barthal </option>
+<option value="Batla House">Batla House</option>
+<option value="Bengali Market">Bengali Market </option>
+<option value="Ber Sarai">Ber Sarai</option>
+<option value="Bhagat Singh Market">Bhagat Singh Market </option>
+<option value="Bhajan Pura">Bhajan Pura </option>
+<option value="BHIKAJI CAMA PLACE">BHIKAJI CAMA PLACE</option>
+<option value="Bhola Nath Nagar">Bhola Nath Nagar </option>
+<option value="Birla Lines">Birla Lines </option>
+<option value="Brahampuri">Brahampuri </option>
+<option value="Brijwasan">Brijwasan</option>
+<option value="Burari">Burari </option>
+<option value="C-4 Janak Puri">C-4 Janak Puri </option>
+<option value="C.C.I.">C.C.I. </option>
+<option value="CGO">CGO</option>
+<option value="Chanakya Puri">Chanakya Puri</option>
+<option value="Chand Nagar">Chand Nagar </option>
+<option value="Chander Lok">Chander Lok</option>
+<option value="Chandni Chowk">Chandni Chowk </option>
+<option value="Chankyapuri">Chankyapuri</option>
+<option value="Chatarpur">Chatarpur</option>
+<option value="Chaukhandi">Chaukhandi </option>
+<option value="Chawri Bazar">Chawri Bazar </option>
+<option value="Chhawla">Chhawla </option>
+<option value="Chilla">Chilla </option>
+<option value="Chirag Delhi">Chirag Delhi</option>
+<option value="Civil Lines">Civil Lines </option>
+<option value="Connaught Place">Connaught Place </option>
+<option value="Constitution House">Constitution House </option>
+<option value="CR Park">CR Park</option>
+<option value="CRPF Jharoda Kalan">CRPF Jharoda Kalan </option>
+<option value="D C Goyla">D C Goyla </option>
+<option value="D C Nangli Sakravati">D C Nangli Sakravati </option>
+<option value="D. K. Mohan Garden">D. K. Mohan Garden </option>
+<option value="D.E.S.U. Colony">D.E.S.U. Colony </option>
+<option value="DA Block shalimar bagh">DA Block shalimar bagh</option>
+<option value="Dabri">Dabri </option>
+<option value="Dada Ghosh Bhawan">Dada Ghosh Bhawan </option>
+<option value="Dareeba">Dareeba </option>
+<option value="Darya Ganj">Darya Ganj </option>
+<option value="Daulatpur">Daulatpur </option>
+<option value="Dayalpur">Dayalpur </option>
+<option value="Defence Colony">Defence Colony</option>
+<option value="Delhi G.P.O.">Delhi G.P.O. </option>
+<option value="Delhi High Court">Delhi High Court </option>
+<option value="Delhi Industrial Area">Delhi Industrial Area </option>
+<option value="Delhi Sadar Bazar">Delhi Sadar Bazar </option>
+<option value="Delhi University">Delhi University </option>
+<option value="Desh Bandhu Gupta Road">Desh Bandhu Gupta Road </option>
+<option value="Devli Khanpur">Devli Khanpur</option>
+<option value="Dhaula Kuan">Dhaula Kuan</option>
+<option value="Dhulsiras">Dhulsiras </option>
+<option value="Dichaoal Kalan">Dichaoal Kalan </option>
+<option value="Dilshad Colony">Dilshad Colony</option>
+<option value="Dilshad Garden">Dilshad Garden </option>
+<option value="Dindarpur">Dindarpur </option>
+<option value="Distt Courts">Distt Courts </option>
+<option value="Distt. Court (KKD)">Distt. Court (KKD) </option>
+<option value="DLF Shivaji Marg">DLF Shivaji Marg</option>
+<option value="Dulsiras">Dulsiras </option>
+<option value="Dwarka">Dwarka</option>
+<option value="Dwarka Flyover">Dwarka Flyover</option>
+<option value="Dwarka Mor">Dwarka Mor</option>
+<option value="Dwarka sec 18B">Dwarka sec 18B</option>
+<option value="Dwarka Sec 23">Dwarka Sec 23</option>
+<option value="Dwarka Sec-6">Dwarka Sec-6 </option>
+<option value="Dwarka Sector8">Dwarka Sector8</option>
+<option value="East Of Kailash">East Of Kailash</option>
+<option value="Election Commission">Election Commission </option>
+<option value="ESI">ESI </option>
+<option value="F F C Okhla">F F C Okhla </option>
+<option value="Faridabad">Faridabad</option>
+<option value="Fateh Nagar">Fateh Nagar </option>
+<option value="G.T.B. Hospital">G.T.B. Hospital </option>
+<option value="Galib Pur">Galib Pur </option>
+<option value="Gandhi Nagar">Gandhi Nagar </option>
+<option value="Gandhi Nagar Bazar">Gandhi Nagar Bazar </option>
+<option value="Gandhi Smarak Nidhi">Gandhi Smarak Nidhi </option>
+<option value="Gautam Nagar">Gautam Nagar</option>
+<option value="Geeta Colony">Geeta Colony </option>
+<option value="Ghandi chowk">Ghandi chowk</option>
+<option value="Ghaziabad" >Ghaziabad</option>
+<option value="Ghazipur">Ghazipur </option>
+<option value="Ghonda">Ghonda </option>
+<option value="Ghuman Hera">Ghuman Hera </option>
+<option value="GK1">GK1</option>
+<option value="GK2">GK2</option>
+<option value="Gokal Puri">Gokal Puri </option>
+<option value="Goverdhan Bihari Colony">Goverdhan Bihari Colony </option>
+<option value="Govind Pura">Govind Pura </option>
+<option value="Govind Puri">Govind Puri</option>
+<option value="Govindpuram">Govindpuram</option>
+<option value="Greater Kailash 2">Greater Kailash 2</option>
+<option value="Greater Noida">Greater Noida</option>
+<option value="Greater Noida UP">Greater Noida UP</option>
+<option value="Green Fields Colony">Green Fields Colony</option>
+<option value="Green Park Main">Green Park Main</option>
+<option value="Gulabi Bagh">Gulabi Bagh </option>
+<option value="Gurgaon">Gurgaon</option>
+<option value="Gurgaon Fortis">Gurgaon Fortis</option>
+<option value="Gurgaon sector 42">Gurgaon sector 42</option>
+<option value="Gurgaon Sector 44">Gurgaon Sector 44</option>
+<option value="Guru Gobind Singh Marg">Guru Gobind Singh Marg </option>
+<option value="Gym Khana Club">Gym Khana Club </option>
+<option value="Hari Nagar">Hari Nagar </option>
+<option value="Hari Nagar BE Block">Hari Nagar BE Block </option>
+<option value="Hari Nagar Dadb Block">Hari Nagar Dadb Block </option>
+<option value="Hastal Village">Hastal Village </option>
+<option value="Hauz Khaz">Hauz Khaz</option>
+<option value="Hauz Qazi">Hauz Qazi </option>
+<option value="Himmatpuri">Himmatpuri </option>
+<option value="Hirankudna">Hirankudna </option>
+<option value="Hosiery Complex Noida">Hosiery Complex Noida</option>
+<option value="Huda City Centre Gurgaon">Huda City Centre Gurgaon</option>
+<option value="I P Extension">I P Extension</option>
+<option value="I.A.R.I.">I.A.R.I. </option>
+<option value="I.P.Estate">I.P.Estate </option>
+<option value="IIT delhi">IIT delhi</option>
+<option value="IMT Manesar">IMT Manesar</option>
+<option value="Inder Lok">Inder Lok</option>
+<option value="Inderpuri">Inderpuri </option>
+<option value="IGI Airport">IGI Airport</option>
+<option value="Indira Park">Indira Park </option>
+<option value="Indirapuram">Indirapuram</option>
+<option value="Indraprastha H.O">Indraprastha H.O</option>
+<option value="IP extension">IP extension</option>
+<option value="Issapur">Issapur </option>
+<option value="J-6 Rajouri Garden">J-6 Rajouri Garden </option>
+<option value="Jafarpur">Jafarpur </option>
+<option value="Jafrabad">Jafrabad </option>
+<option value="Jagatpur">Jagatpur </option>
+<option value="Jagjit Nagar">Jagjit Nagar </option>
+<option value="Jail Road">Jail Road </option>
+<option value="Jama Masjid">Jama Masjid </option>
+<option value="Jamia Nagar">Jamia Nagar</option>
+<option value="Janak Puri">Janak Puri</option>
+<option value="Janpath">Janpath </option>
+<option value="Janta Market">Janta Market </option>
+<option value="Jasola">Jasola</option>
+<option value="Jawahar Nagar">Jawahar Nagar </option>
+<option value="Jawahar Park or Sahid Nagar">Jawahar Park or Sahid Nagar</option>
+<option value="Jawala Heri">Jawala Heri </option>
+<option value="Jeevan Park">Jeevan Park </option>
+<option value="Jhandewalan Extn">Jhandewalan Extn</option>
+<option value="Jharoda Kalan">Jharoda Kalan </option>
+<option value="Jharoda Majraa">Jharoda Majraa </option>
+<option value="Jhatikara">Jhatikara </option>
+<option value="Jhilmil H.O">Jhilmil H.O</option>
+<option value="Jhilmil Tahirpur">Jhilmil Tahirpur </option>
+<option value="Johripur">Johripur </option>
+<option value="Jor Bagh">Jor Bagh</option>
+<option value="Jwala Puri">Jwala Puri </option>
+<option value="Jwalaheri">Jwalaheri </option>
+<option value="Kailash Colony">Kailash Colony</option>
+<option value="Kailash Nagar">Kailash Nagar </option>
+<option value="Kair">Kair </option>
+<option value="Kakrola">Kakrola </option>
+<option value="Kalkaji">Kalkaji</option>
+<option value="Kalkaji Extension">Kalkaji Extension</option>
+<option value="Kalyanpuri">Kalyanpuri </option>
+<option value="Kalyanvas">Kalyanvas </option>
+<option value="Kamla Nagar">Kamla Nagar </option>
+<option value="Kangan Heri">Kangan Heri </option>
+<option value="Kanhaiya Nagar">Kanhaiya Nagar</option>
+<option value="Karam Pura">Karam Pura </option>
+<option value="Karawal Nagar">Karawal Nagar </option>
+<option value="Karol Bagh">Karol Bagh </option>
+<option value="Keshav Puram">Keshav Puram</option>
+<option value="Khaira">Khaira </option>
+<option value="Khan market">Khan market</option>
+<option value="Khanpur">Khanpur</option>
+<option value="Khazuri Khas">Khazuri Khas </option>
+<option value="Khera Dabur">Khera Dabur </option>
+<option value="Khyala Phase - I">Khyala Phase -  I </option>
+<option value="Khyala Phase - II">Khyala Phase - II </option>
+<option value="Kotla Mubarakpur">Kotla Mubarakpur</option>
+<option value="Krishi Bhawan">Krishi Bhawan </option>
+<option value="Krishna Nagar H.O">Krishna Nagar H.O</option>
+<option value="L. M. Nagar Indl. Area">L. M. Nagar Indl. Area </option>
+<option value="Lado Sarai">Lado Sarai</option>
+<option value="Lady Harding Medical College">Lady Harding Medical College </option>
+<option value="Lajpat Nagar">Lajpat Nagar</option>
+<option value="Lajpat Nagar">Lajpat Nagar</option>
+<option value="Lawrance Road">Lawrance Road</option>
+<option value="Laxmi Nagar">Laxmi Nagar</option>
+<option value="Laxmi Nagar">Laxmi Nagar </option>
+<option value="Lodhi Road">Lodhi Road</option>
+<option value="Loni Road">Loni Road </option>
+<option value="Loni Road Housing Complex">Loni Road Housing Complex </option>
+<option value="M.B.S. Nagar">M.B.S. Nagar </option>
+<option value="M2K Pitampura">M2K Pitampura</option>
+<option value="Madipur Slum Quarter">Madipur Slum Quarter </option>
+<option value="Madipur Village">Madipur Village </option>
+<option value="Mahabir Nagar">Mahabir Nagar </option>
+<option value="Maharani Bagh">Maharani Bagh</option>
+<option value="Mahavir Enclave">Mahavir Enclave</option>
+<option value="Mahipalpur Extn">Mahipalpur Extn</option>
+<option value="Malik Pur">Malik Pur </option>
+<option value="Malik Pur">Malik Pur </option>
+<option value="Malka Ganj">Malka Ganj </option>
+<option value="Malviya Nagar">Malviya Nagar</option>
+<option value="Man Sarovar Park">Man Sarovar Park </option>
+<option value="Mandawali Fazalpur">Mandawali Fazalpur </option>
+<option value="Mandoli Saboli">Mandoli Saboli </option>
+<option value="Manesar">Manesar</option>
+<option value="Mansarover Garden">Mansarover Garden </option>
+<option value="Master Prithvi Nath Marg">Master Prithvi Nath Marg </option>
+<option value="Matiala">Matiala </option>
+<option value="Maujpur">Maujpur </option>
+<option value="Maya Puri">Maya Puri </option>
+<option value="Mayur Vihar II">Mayur Vihar II</option>
+<option value="Mayur Vihar Ph II">Mayur Vihar Ph II</option>
+<option value="Mayur Vihar Ph-I">Mayur Vihar Ph-I </option>
+<option value="Mayur Vihar Ph-III">Mayur Vihar Ph-III </option>
+<option value="Mayur Vihar Phase 2">Mayur Vihar Phase 2</option>
+<option value="Minto Road">Minto Road </option>
+<option value="Mitraon">Mitraon </option>
+<option value="Model Town">Model Town</option>
+<option value="Moolchand">Moolchand</option>
+<option value="Moti Nagar">Moti Nagar</option>
+<option value="Motia Khan">Motia Khan</option>
+<option value="Multani Dhanda">Multani Dhanda </option>
+<option value="Mundela Kalan">Mundela Kalan </option>
+<option value="Mundka">Mundka </option>
+<option value="Munirka">Munirka</option>
+<option value="N.I.Area">N.I.Area </option>
+<option value="N.S.I.T. Dwarka">N.S.I.T. Dwarka </option>
+<option value="Najafgarh">Najafgarh </option>
+<option value="Nand Nagri A">Nand Nagri A </option>
+<option value="Nand Nagri C">Nand Nagri C </option>
+<option value="Nangal Dewat near Vasant Kunj D6">Nangal Dewat near Vasant Kunj D6</option>
+<option value="Nangal Raya">Nangal Raya </option>
+<option value="Nangloi">Nangloi </option>
+<option value="Nangloi - II">Nangloi - II </option>
+<option value="Nangloi - III">Nangloi - III </option>
+<option value="Naraina Industrial Estate H.O">Naraina Industrial Estate H.O</option>
+<option value="Naraina Vihar">Naraina Vihar</option>
+<option value="Naraina Village">Naraina Village </option>
+<option value="Nasirpur">Nasirpur </option>
+<option value="National Physical Laboratory">National Physical Laboratory </option>
+<option value="Nehru Park">Nehru Park</option>
+<option value="Nehru Place">Nehru Place</option>
+<option value="New Ashok Nagar">New Ashok Nagar</option>
+<option value="New Delhi">New Delhi</option>
+<option value="New Delhi G.P.O.">New Delhi G.P.O. </option>
+<option value="New Delhi H.O">New Delhi H.O</option>
+<option value="New Delhi Railway Station">New Delhi Railway Station</option>
+<option value="New Delhi railway Stn">New Delhi railway Stn</option>
+<option value="New Friends Colony">New Friends Colony</option>
+<option value="New Kondli">New Kondli</option>
+<option value="New Palam Vihar">New Palam Vihar</option>
+<option value="New Seemapuri">New Seemapuri </option>
+<option value="New Usmanpur">New Usmanpur </option>
+<option value="Nilothi">Nilothi </option>
+<option value="Nirman Bhawan">Nirman Bhawan </option>
+<option value="Nirman Vihar">Nirman Vihar </option>
+<option value="NIT Faridabad">NIT Faridabad</option>
+<option value="Noida">Noida</option>
+<option value="Noida Film City">Noida Film City</option>
+<option value="Noida Phase II NSEZ">Noida Phase II NSEZ</option>
+<option value="Noida sector 142">Noida sector 142</option>
+<option value="Noida Sector 2">Noida Sector 2</option>
+<option value="Noida Sector 61">Noida Sector 61</option>
+<option value="North Avenue">North Avenue </option>
+<option value="Okhla">Okhla</option>
+<option value="Okhla industrial area Phase II">Okhla industrial area Phase II</option>
+<option value="Okhla phase 1">Okhla phase 1</option>
+<option value="Okhla Phase III">Okhla Phase III</option>
+<option value="Old Seemapuri">Old Seemapuri </option>
+<option value="Other">Other</option>
+<option value="Padam Nagar">Padam Nagar </option>
+<option value="Pahar Ganj">Pahar Ganj </option>
+<option value="Palam Village">Palam Village </option>
+<option value="Pancheel Park">Pancheel Park</option>
+<option value="Pandara Road">Pandara Road </option>
+<option value="Pandwala Kalan">Pandwala Kalan </option>
+<option value="Papravat">Papravat </option>
+<option value="Parliament House">Parliament House </option>
+<option value="Paschim Vihar">Paschim Vihar </option>
+<option value="Paschim Vihar B Block">Paschim Vihar B Block </option>
+<option value="Patel Nagar">Patel Nagar </option>
+<option value="Patel Nagar East">Patel Nagar East </option>
+<option value="Patel Nagar South">Patel Nagar South </option>
+<option value="Patel Nagar West">Patel Nagar West </option>
+<option value="Patiala House">Patiala House</option>
+<option value="Patiala House">Patiala House </option>
+<option value="Patparganj">Patparganj </option>
+<option value="Patrachar Vidyalay">Patrachar Vidyalay </option>
+<option value="Peeragarhi">Peeragarhi </option>
+<option value="Phase 2 Noida">Phase 2 Noida</option>
+<option value="Pitam Pura">Pitam Pura</option>
+<option value="Pragati Maidan">Pragati Maidan </option>
+<option value="Prashant Vihar">Prashant Vihar</option>
+<option value="Preet Vihar">Preet Vihar</option>
+<option value="Punjabi Bagh">Punjabi Bagh </option>
+<option value="Punjabi Bagh Club">Punjabi Bagh Club</option>
+<option value="Punjabi Bagh Sec - III">Punjabi Bagh Sec - III </option>
+<option value="Pushpa Bhawan">Pushpa Bhawan</option>
+<option value="Quazipur">Quazipur </option>
+<option value="Qutub Institutional Area">Qutub Institutional Area</option>
+<option value="R K Puram (Main)">R K Puram (Main) </option>
+<option value="R K Puram Sect-1">R K Puram Sect-1 </option>
+<option value="R K Puram Sect-12">R K Puram Sect-12 </option>
+<option value="R K Puram Sect-3">R K Puram Sect-3 </option>
+<option value="R K Puram Sect-4">R K Puram Sect-4 </option>
+<option value="R K Puram Sect-5">R K Puram Sect-5 </option>
+<option value="R K Puram Sect-8">R K Puram Sect-8 </option>
+<option value="R K Puram Sect7">R K Puram Sect7 </option>
+<option value="R K Puram West">R K Puram West </option>
+<option value="R R Hospital">R R Hospital </option>
+<option value="R.C.A.O.">R.C.A.O. </option>
+<option value="Raghubar Pura">Raghubar Pura </option>
+<option value="Rail Bhawan">Rail Bhawan </option>
+<option value="Raj Nagar - II">Raj Nagar - II </option>
+<option value="Rajeev Chowk">Rajeev Chowk</option>
+<option value="Rajender Nagar">Rajender Nagar </option>
+<option value="Rajgarh Colony">Rajgarh Colony </option>
+<option value="Rajghat Power House">Rajghat Power House </option>
+<option value="Rajnagar Extension Ghaziabad">Rajnagar Extension Ghaziabad</option>
+<option value="Rajouri Garden">Rajouri Garden </option>
+<option value="Rajouri Market">Rajouri Market </option>
+<option value="Ram Nagar">Ram Nagar </option>
+<option value="Ramesh Nagar H.O">Ramesh Nagar H.O</option>
+<option value="Rampura">Rampura</option>
+<option value="Rana Pratap Bagh">Rana Pratap Bagh </option>
+<option value="Ranhola">Ranhola </option>
+<option value="Rani Bagh">Rani Bagh</option>
+<option value="Raota">Raota </option>
+<option value="Rashtrapati Bhawan">Rashtrapati Bhawan </option>
+<option value="Rewla Khanpur">Rewla Khanpur </option>
+<option value="Rithala">Rithala</option>
+<option value="Rohini Sec 7">Rohini Sec 7</option>
+<option value="Rohini Sec-28">Rohini Sec-28</option>
+<option value="Rohini Sector 1">Rohini Sector 1</option>
+<option value="Rohini Sector 1 Avantika">Rohini Sector 1 Avantika</option>
+<option value="Rohini sector 15">Rohini sector 15</option>
+<option value="Rohini sector 16">Rohini sector 16</option>
+<option value="Rohini Sector 18">Rohini Sector 18</option>
+<option value="Rohini Sector 24">Rohini Sector 24</option>
+<option value="Rohini sector 28">Rohini sector 28</option>
+<option value="Rohini sectors 1 to Sector 25">Rohini sectors 1 to Sector 25</option>
+<option value="Rohtash Nagar">Rohtash Nagar </option>
+<option value="S J Enclave">S J Enclave </option>
+<option value="S P School">S P School </option>
+<option value="Sabhapur">Sabhapur </option>
+<option value="Sabji Mandi">Sabji Mandi</option>
+<option value="Sagar Pur">Sagar Pur</option>
+<option value="Sagarpur">Sagarpur </option>
+<option value="Sainik Farm">Sainik Farm</option>
+<option value="Sangam Vihar">Sangam Vihar</option>
+<option value="Sanjay Nagar Mangol Pur">Sanjay Nagar Mangol Pur</option>
+<option value="Sansad Marg H.O">Sansad Marg H.O</option>
+<option value="Sansadiya Soudh">Sansadiya Soudh </option>
+<option value="Saraswati Vihar">Saraswati Vihar</option>
+<option value="Sarojini Nagar">Sarojini Nagar</option>
+<option value="Sarojini Nagar H.O">Sarojini Nagar H.O</option>
+<option value="Sat Nagar">Sat Nagar </option>
+<option value="Secretariat North">Secretariat North </option>
+<option value="Sector 22 Dwarka">Sector 22 Dwarka</option>
+<option value="Sector 44 Gurgaon">Sector 44 Gurgaon</option>
+<option value="Sector 62">Sector 62</option>
+<option value="Seelampur">Seelampur </option>
+<option value="Shahabad Mohammadpur">Shahabad Mohammadpur</option>
+<option value="Shahdara">Shahdara </option>
+<option value="Shahdara Mandi">Shahdara Mandi </option>
+<option value="Shakarpur">Shakarpur </option>
+<option value="Shalimar Bagh">Shalimar Bagh</option>
+<option value="Shastri Bhawan">Shastri Bhawan </option>
+<option value="Shastri Nagar">Shastri Nagar </option>
+<option value="Shastri Park">Shastri Park</option>
+<option value="Sheikh Sarai">Sheikh Sarai</option>
+<option value="Sheikh Sarai">Sheikh Sarai</option>
+<option value="Okhla phase 2">Okhla phase 2</option>
+<option value="Shivaji Park">Shivaji Park </option>
+<option value="Shopping Centre Mayapuri">Shopping Centre Mayapuri </option>
+<option value="Shyam Vihar">Shyam Vihar</option>
+<option value="Signal Enclave">Signal Enclave </option>
+<option value="Sonia Vihar">Sonia Vihar </option>
+<option value="Sonipat">Sonipat</option>
+<option value="South Avenue">South Avenue </option>
+<option value="South Delhi Campus">South Delhi Campus </option>
+<option value="South Extension">South Extension</option>
+<option value="South extension 2">South extension 2</option>
+<option value="South extension 2 ndse2">South extension 2 ndse2</option>
+<option value="Station Road">Station Road </option>
+<option value="Subhash Nagar">Subhash Nagar </option>
+<option value="Subhash Nagar West">Subhash Nagar West </option>
+<option value="Subroto Park">Subroto Park </option>
+<option value="Sultanpur">Sultanpur </option>
+<option value="Sunder Nagar">Sunder Nagar</option>
+<option value="Sunder Vihar">Sunder Vihar </option>
+<option value="Supreme Court">Supreme Court </option>
+<option value="Surajmal Vihar">Surajmal Vihar </option>
+<option value="Surehra">Surehra </option>
+<option value="Swami Ram Tirth Nagar">Swami Ram Tirth Nagar </option>
+<option value="T B Hospital">T B Hospital </option>
+<option value="Technology Bhawan">Technology Bhawan </option>
+<option value="Telewara">Telewara </option>
+<option value="Tihar jail">Tihar jail</option>
+<option value="Tikri Kalan">Tikri Kalan </option>
+<option value="Tilak Nagar">Tilak Nagar </option>
+<option value="Tilak Nagar East">Tilak Nagar East </option>
+<option value="Tilangpur Kotla">Tilangpur Kotla </option>
+<option value="Tri Nagar">Tri Nagar</option>
+<option value="Trilok Puri">Trilok Puri </option>
+<option value="Tuglakabad">Tuglakabad</option>
+<option value="Udyog Bhawan">Udyog Bhawan </option>
+<option value="Ujwa">Ujwa </option>
+<option value="Union Public Service Commissio">Union Public Service Commissio </option>
+<option value="Uttam Nagar">Uttam Nagar</option>
+<option value="Uttam Nagar">Uttam Nagar </option>
+<option value="V.K. Nagar">V.K. Nagar </option>
+<option value="Vaishali">Vaishali</option>
+<option value="Vasant Kunj">Vasant Kunj </option>
+<option value="Vasant Kunj Pkt-A">Vasant Kunj Pkt-A </option>
+<option value="Vasant Vihar-1">Vasant Vihar-1 </option>
+<option value="Vasant Vihar-2">Vasant Vihar-2 </option>
+<option value="Vasundhara">Vasundhara</option>
+<option value="Vasundhra Enclave">Vasundhra Enclave </option>
+<option value="Vijay Enclave">Vijay Enclave</option>
+<option value="Vikas Puri">Vikas Puri </option>
+<option value="Vishnu Garden">Vishnu Garden </option>
+<option value="Vishwas Nagar">Vishwas Nagar </option>
+<option value="Vivek Vihar">Vivek Vihar </option>
+<option value="West Rohtash Nagar">West Rohtash Nagar</option>
+<option value="Yamuna Vihar">Yamuna Vihar </option>
+<option value="Yozna Vihar">Yozna Vihar </option>
+<option value="Zafrabad">Zafrabad</option>
+<option value="Zakhira">Zakhira </option>
+
+				</select>
+				
+				<br/>
+				
+				
+				<label>Start Time<span>*</span>:</label>
+				<select name="start">
+				<option value="8:00AM">8:00AM</option>
+					<option value="9:00AM">9:00AM</option>
+					
+					<option value="10">10:00AM</option>
+					
+					<option value="11">11:00AM</option>
+					
+					<option value="12">12:00PM</option>				
+					<option value="13">1:00PM</option>
+					
+					<option value="14">2:00PM</option>
+					<option value="15">3:00PM</option>
+					
+					<option value="16">4:00PM</option>
+					<option value="17">5:00PM</option>
+					<option value="18">6:00PM</option>
+					<option value="19">7:00PM</option>
+					
+				</select>
+						
+				<label class="comfort"><strong> Comfortable With:</strong></label>
+				
+				<label class="gender">Gender</label>
+				<select name="gender"><option value="male">Male</option>
+				
+				<option value="female">Female</option>
+				</select>
+				
+				
+					
+				
+				<label class="age">Age</label>
+				<select name="cage">
+				<option value="any">
+					Any
+					</option>
+					
+				<option value="18">
+					18
+					</option>
+				
+				</select>
+				
+				</div>
+		
+				<div id="choose">
+					<fieldset>		<legend><strong>For further login</strong></legend>	<label>Username</label>
+						<input name="username" placeholder="Choose a username!" type="text" onBlur="check()" class="usr" id="usr" onfocus="hid()">
+								
+						<span class="stat" id="stat"></span>
+							<p><img id="loaderimg" src="ajax-loader.gif" style="display:none;"></p>
+						
+					
+						
+						<label>Password:</label>
+						<input type="password" placeholder="Choose a strong password" name="password" id="password" class="password">
+						<span id="result"></span>
+					</fieldset>	
+				</div>
+				
+			<input type="submit" name="submit" class="submit" value="Find your CarPartner">
+			
+			</form>
+		
+			<a href=""><button type="button" class="miss"> Missing any Place?</button></a>
+			
+		</div>
+		<div class="clr"></div>
+		<footer>
+		<h1>Designed By:</h1><h2>Ashwani Kumar Dubey</h2>
+		</footer>
+	
+	</body>
+	
+</html>

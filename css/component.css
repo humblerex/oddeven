@@ -1,0 +1,261 @@
+*{
+	margin: 0;
+	padding
+	0;
+}
+body{
+	background: #fffaf0;
+}
+
+header{
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	text-align: center;
+	height:auto;
+background: linear-gradient(#9178fa,#650dcb);
+	color: white;
+box-shadow:0px 1px 3px black;
+}
+
+body{
+	overflow-x: hidden;
+}
+
+header h1{
+	margin-bottom: 5px;
+	text-shadow: 0px 1px 3px black;
+	font-family: sans-serif;
+}
+header p{
+	font-family: sans-serif;
+background: orange;
+	text-shadow: 0px 1px 3px black;
+	font-style: normal;
+	font-weight: bold;
+	letter-spacing: 1px;
+	word-spacing: 1px;
+border: 1px solid black;
+	margin: 3px 0;
+}
+
+#main{
+	
+	padding: 15px;
+	width: 90%;
+	margin: auto;
+
+	margin-top: 6em;
+
+border-radius:3px;
+	height:600px;
+	border: 1px solid gray;
+background: white;
+	box-shadow: 0px 1px 3px gray;
+height: 900px;	
+}
+
+#personal,#travel{
+	float: left;
+	width: 45%;
+	padding: 20px;
+}
+
+#personal{
+	border-right: 1px solid gray;
+}
+
+#travel{
+	margin-left: 2%;
+}
+
+
+form h2{
+	text-align: center;
+	margin-bottom: 10px;
+	border-bottom: 1px solid maroon;
+width:100%;
+}
+
+label span{
+	color: red;
+}
+
+form label{
+	display: block;
+	font-size: 20px;
+	
+}
+form input{
+	margin-bottom: 25px;
+	width:90%;
+	height: 20px;
+	font-size: 15px;
+	padding: 5px 15px;
+	border-radius: 3px;
+	border: 1px solid #e0dbdb;
+	color: darkgray;
+	
+}
+
+input:focus{
+	border: 1px solid blue;
+	outline: none;
+}
+
+.from,.to{
+	display: inline;
+	margin-left: 5px;
+
+	
+}
+
+.pickup{
+	margin-right: 15px;
+}
+form input[type=radio]{
+width:15px;
+	height: 15px;
+	margin: 5px;
+	margin-bottom: 10px;
+}
+
+select{
+	font-size: 15px;
+	border-radius: 3px;
+	padding: 5px;
+	width: 150px;
+	margin-bottom: 30px;
+}
+
+
+.gender,.age{
+	display:inline;	
+margin-left: 20px;
+	}
+
+
+.p-id{
+	margin-top: 10px;
+	width: 200px;
+	font-weight: bolder;
+	color: red;
+}
+.carw,.adhar,.eid{
+	display: inline;
+}
+
+.company-detail{
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#car,#adhar{
+	width: 50%;
+display: block;	
+}
+#eid,#cname{
+width:60%;	
+	display: block;
+	
+}
+
+
+#already{
+	width: 150px;
+	padding: 5px;
+	text-align: center;
+	font-family: sans-serif;
+	border-radius: 3px;
+	background: #70de70;
+	color: white;
+	cursor: pointer;
+	}
+#already:hover{
+	background: #2ac70d;
+} 
+a{
+	text-decoration: none;
+}
+
+.usr{
+	margin-bottom: 5px;
+}
+
+.clr{
+	clear: both;
+}
+
+	.submit,.miss{
+	border: none;
+		font-size: 25px;
+		padding: 10px;
+		height: 50px;
+		width:45%;
+background:#00bf00;
+		color: white;
+		border-radius: 5px;
+		cursor: pointer;
+       		outline: none;
+		transition: 0.2s;
+			
+		margin-left: 4%;
+}
+footer{
+	background: #cecece;
+	width: 100%;
+	text-align: center;
+	
+	margin-top: 10px;
+border-top: 2px solid gray;
+	color: #000000;
+	text-shadow: 0px 1px 3px black;
+}
+footer h2{
+	color: aqua;
+}
+
+.miss{
+background: #eb2e2e;	
+}
+
+.submit:hover{
+	background: darkgreen;
+}
+
+.miss:hover{
+	background: darkred;
+}
+
+@media screen and (max-width: 1080px) { 
+	header{
+		font-size: 10px;
+	}
+
+	#personal,#travel{
+		width: 90%;
+		float: none;
+		border: none;
+		padding: 10px;
+	}
+
+	#main{
+		height: 100%;
+	}
+	
+	.submit,.miss{
+		width: 100%;
+		margin: 5px 0;
+	font-size: 14px;
+		height: 30px;
+		}
+	
+	.to,.from{
+		display:block;
+	}
+	
+	.gender,.age{
+		display: block;
+		margin: 0px;
+	}
+}
